@@ -171,6 +171,13 @@
 		2E722B9F186C7AC5006D359D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E722B9E186C7AC5006D359D /* HelloWorldLayer.m */; };
 		2E722BA2186C7AC5006D359D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E722BA1186C7AC5006D359D /* IntroLayer.m */; };
 		2E722BA4186C7AC5006D359D /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E722BA3186C7AC5006D359D /* grossini_dance_atlas.png */; };
+		2EF2F0F11871BC7900AA823E /* CPSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F01871BC7900AA823E /* CPSprite.m */; };
+		2EF2F0F41871BC9200AA823E /* SmallBlockSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F31871BC9200AA823E /* SmallBlockSprite.m */; };
+		2EF2F0F61871BED100AA823E /* catnap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F51871BED100AA823E /* catnap.plist */; };
+		2EF2F0F81871BF5900AA823E /* catnap.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F71871BF5900AA823E /* catnap.png */; };
+		2EF2F0FB1871C17D00AA823E /* catnap_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F91871C17D00AA823E /* catnap_bg-hd.png */; };
+		2EF2F0FC1871C17D00AA823E /* catnap_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF2F0FA1871C17D00AA823E /* catnap_bg.png */; };
+		2EF2F0FE1871C24400AA823E /* 00.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF2F0FD1871C24400AA823E /* 00.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -513,6 +520,15 @@
 		2E722BA0186C7AC5006D359D /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		2E722BA1186C7AC5006D359D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		2E722BA3186C7AC5006D359D /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
+		2EF2F0EF1871BC7800AA823E /* CPSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSprite.h; sourceTree = "<group>"; };
+		2EF2F0F01871BC7900AA823E /* CPSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPSprite.m; sourceTree = "<group>"; };
+		2EF2F0F21871BC9200AA823E /* SmallBlockSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBlockSprite.h; sourceTree = "<group>"; };
+		2EF2F0F31871BC9200AA823E /* SmallBlockSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallBlockSprite.m; sourceTree = "<group>"; };
+		2EF2F0F51871BED100AA823E /* catnap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = catnap.plist; sourceTree = "<group>"; };
+		2EF2F0F71871BF5900AA823E /* catnap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catnap.png; sourceTree = "<group>"; };
+		2EF2F0F91871C17D00AA823E /* catnap_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catnap_bg-hd.png"; sourceTree = "<group>"; };
+		2EF2F0FA1871C17D00AA823E /* catnap_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catnap_bg.png; sourceTree = "<group>"; };
+		2EF2F0FD1871C24400AA823E /* 00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 00.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,6 +595,11 @@
 				2E722B9E186C7AC5006D359D /* HelloWorldLayer.m */,
 				2E722BA0186C7AC5006D359D /* IntroLayer.h */,
 				2E722BA1186C7AC5006D359D /* IntroLayer.m */,
+				2EF2F0EF1871BC7800AA823E /* CPSprite.h */,
+				2EF2F0F01871BC7900AA823E /* CPSprite.m */,
+				2EF2F0F21871BC9200AA823E /* SmallBlockSprite.h */,
+				2EF2F0F31871BC9200AA823E /* SmallBlockSprite.m */,
+				2EF2F0F71871BF5900AA823E /* catnap.png */,
 				2E7229AE186C7AC3006D359D /* Resources */,
 				2E7229C6186C7AC3006D359D /* libs */,
 				2E722B96186C7AC5006D359D /* Supporting Files */,
@@ -589,6 +610,10 @@
 		2E7229AE186C7AC3006D359D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2EF2F0FD1871C24400AA823E /* 00.png */,
+				2EF2F0F91871C17D00AA823E /* catnap_bg-hd.png */,
+				2EF2F0FA1871C17D00AA823E /* catnap_bg.png */,
+				2EF2F0F51871BED100AA823E /* catnap.plist */,
 				2E7229AF186C7AC3006D359D /* Default.png */,
 				2E7229B1186C7AC3006D359D /* Default@2x.png */,
 				2E7229B3186C7AC3006D359D /* Default-568h@2x.png */,
@@ -1125,6 +1150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E7229C0186C7AC3006D359D /* Icon.png in Resources */,
+				2EF2F0FE1871C24400AA823E /* 00.png in Resources */,
+				2EF2F0F61871BED100AA823E /* catnap.plist in Resources */,
 				2E722B1E186C7AC5006D359D /* ChangeLog in Resources */,
 				2E7229B2186C7AC3006D359D /* Default@2x.png in Resources */,
 				2E7229BC186C7AC3006D359D /* Icon-Small.png in Resources */,
@@ -1134,8 +1161,11 @@
 				2E7229C5186C7AC3006D359D /* iTunesArtwork in Resources */,
 				2E7229BE186C7AC3006D359D /* Icon-Small@2x.png in Resources */,
 				2E7229B6186C7AC3006D359D /* Default-Landscape~ipad.png in Resources */,
+				2EF2F0FC1871C17D00AA823E /* catnap_bg.png in Resources */,
+				2EF2F0FB1871C17D00AA823E /* catnap_bg-hd.png in Resources */,
 				2E722BA4186C7AC5006D359D /* grossini_dance_atlas.png in Resources */,
 				2E7229B4186C7AC3006D359D /* Default-568h@2x.png in Resources */,
+				2EF2F0F81871BF5900AA823E /* catnap.png in Resources */,
 				2E7229C2186C7AC3006D359D /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1172,6 +1202,7 @@
 				2E722A25186C7AC4006D359D /* CCLabelBMFont.m in Sources */,
 				2E722AD2186C7AC4006D359D /* ccCArray.m in Sources */,
 				2E722B61186C7AC5006D359D /* cpDampedSpring.c in Sources */,
+				2EF2F0F11871BC7900AA823E /* CPSprite.m in Sources */,
 				2E722AFC186C7AC5006D359D /* CDXMacOSXSupport.m in Sources */,
 				2E722B83186C7AC5006D359D /* cpShape.c in Sources */,
 				2E722B75186C7AC5006D359D /* cpArray.c in Sources */,
@@ -1229,6 +1260,7 @@
 				2E722A35186C7AC4006D359D /* CCMotionStreak.m in Sources */,
 				2E722B73186C7AC5006D359D /* cpArbiter.c in Sources */,
 				2E722AB4186C7AC4006D359D /* CCGLView.m in Sources */,
+				2EF2F0F41871BC9200AA823E /* SmallBlockSprite.m in Sources */,
 				2E722AE1186C7AC4006D359D /* CGPointExtension.m in Sources */,
 				2E7229E5186C7AC3006D359D /* CCActionPageTurn3D.m in Sources */,
 				2E722B7B186C7AC5006D359D /* cpBody.c in Sources */,
@@ -1405,6 +1437,7 @@
 				2E722BA9186C7AC5006D359D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

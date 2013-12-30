@@ -11,6 +11,8 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 
+#import "SmallBlockSprite.h"
+
 enum {
 	kTagParentNode = 1,
 };
@@ -60,10 +62,10 @@ enum {
 		// title
 		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Multi touch the screen" fontName:@"Marker Felt" fontSize:36];
 		label.position = ccp( s.width / 2, s.height - 30);
-		[self addChild:label z:-1];
+//		[self addChild:label z:-1];
 		
 		// reset button
-		[self createMenu];
+//		[self createMenu];
 		
 		
 		// init physics
@@ -79,10 +81,38 @@ enum {
 		_spriteTexture = [[CCTextureCache sharedTextureCache] addImage:@"grossini_dance_atlas.png"];
 		CCNode *parent = [CCNode node];
 #endif
-		[self addChild:parent z:0 tag:kTagParentNode];
+//		[self addChild:parent z:0 tag:kTagParentNode];
 		
-		[self addNewSpriteAtPosition:ccp(200,200)];
-		
+//		[self addNewSpriteAtPosition:ccp(100,100)];
+		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"catnap.plist"];
+        CCSpriteBatchNode *batchNode = [CCSpriteBatchNode batchNodeWithFile:@"catnap.png"];
+//        [self addChild:batchNode];
+        SmallBlockSprite *s1 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
+        s1.position = ccp(150, 50);
+        [self addChild:s1];
+        
+        SmallBlockSprite *s2 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
+        s2.position = ccp(450, 250);
+        [self addChild:s2];
+        
+        cpShape *shape1 = cpSegmentShapeNew( _space->staticBody, cpv(100,50), cpv(200,50), 0.0f);
+        cpShapeSetElasticity( shape1, 1.0f );
+		cpShapeSetFriction( shape1, 1.0f );
+		cpSpaceAddStaticShape(_space, shape1 );
+        
+        cpShape *shape2 = cpSegmentShapeNew( _space->staticBody, cpv(400,250), cpv(500,250), 0.0f);
+        cpShapeSetElasticity( shape2, 1.0f );
+		cpShapeSetFriction( shape2, 1.0f );
+		cpSpaceAddStaticShape(_space, shape2 );
+        
+        cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(150, 10), ccp(450, 210), 0.0f);
+        cpShapeSetElasticity( po, 1.0f );
+		cpShapeSetFriction( po, 1.0f );
+		cpSpaceAddStaticShape(_space, po );
+        
+        CCSprite *background = [CCSprite spriteWithFile:@"catnap_bg.png"];
+        background.anchorPoint = CGPointZero;
+//        [self addChild:background z:-1];
 		[self scheduleUpdate];
 	}
 	
@@ -226,11 +256,14 @@ enum {
 	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
 	cpBodySetPos( body, pos );
 	cpSpaceAddBody(_space, body);
+    
 	
 	cpShape* shape = cpPolyShapeNew(body, num, verts, CGPointZero);
 	cpShapeSetElasticity( shape, 0.5f );
 	cpShapeSetFriction( shape, 0.5f );
 	cpSpaceAddShape(_space, shape);
+    
+//    cpBody *b1 = cpBodyNewStatic()
 	
 	// sprite
 	CCNode *parent = [self getChildByTag:kTagParentNode];
@@ -259,7 +292,7 @@ enum {
 	};
 	 CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"Icon.png" rect:CGRectMake(0, 0, 50, 50)];
 	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
-	
+//	cpBody *b = cpBodyInitStatic(body);
 	body->p = pos;
 	cpSpaceAddBody(_space, body);
 	

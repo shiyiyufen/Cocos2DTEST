@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGame/HelloWorldLayer.m"
-            timestampString = "409766394.959355"
+            timestampString = "410110523.12245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-ccTouchesEnded:withEvent:"
             landmarkType = "5">
             <Locations>
@@ -24,12 +24,12 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[HelloWorldLayer ccTouchesEnded:withEvent:]"
                   moduleName = "TestGame"
-                  urlString = "file:///Users/ZhaoJuan/Documents/PERSONAL/TestGame/TestGame/HelloWorldLayer.m"
-                  timestampString = "409762600.594512"
+                  urlString = "file:///Users/ZhaoJuan/Documents/PERSONAL/COCOS-TEST/TestGame/TestGame/HelloWorldLayer.m"
+                  timestampString = "410108310.57505"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
                   offsetFromSymbolStart = "78">
                </Location>
                <Location
@@ -38,15 +38,47 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[HelloWorldLayer ccTouchesEnded:withEvent:]"
                   moduleName = "TestGame"
-                  urlString = "file:///Users/ZhaoJuan/Documents/PERSONAL/TestGame/TestGame/HelloWorldLayer.m"
-                  timestampString = "409762600.595725"
+                  urlString = "file:///Users/ZhaoJuan/Documents/PERSONAL/COCOS-TEST/TestGame/TestGame/HelloWorldLayer.m"
+                  timestampString = "410108310.575474"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
                   offsetFromSymbolStart = "685">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestGame/HelloWorldLayer.m"
+            timestampString = "410110523.12245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-addNewSpriteAtPosition:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestGame/HelloWorldLayer.m"
+            timestampString = "410108307.557004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-init"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
