@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "cpMouse.h"
 // Import the interfaces
 #import "HelloWorldLayer.h"
 
@@ -87,23 +87,33 @@ enum {
 		[[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"catnap.plist"];
         CCSpriteBatchNode *batchNode = [CCSpriteBatchNode batchNodeWithFile:@"catnap.png"];
 //        [self addChild:batchNode];
-        SmallBlockSprite *s1 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
-        s1.position = ccp(150, 50);
-        [self addChild:s1];
+//        SmallBlockSprite *s1 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
+//        s1.position = ccp(150, 50);
+//        [self addChild:s1];
+//        
+//        SmallBlockSprite *s2 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
+//        s2.position = ccp(450, 250);
+//        [self addChild:s2];
         
-        SmallBlockSprite *s2 = [[SmallBlockSprite alloc] initWithFile:@"00.png"];
-        s2.position = ccp(450, 250);
-        [self addChild:s2];
+        cpShape *shape0 = cpSegmentShapeNew( _space->staticBody, cpv(100,250), cpv(200,250), 0.0f);
+        cpShapeSetElasticity( shape0, 1.0f );
+		cpShapeSetFriction( shape0, 1.0f );
+		cpSpaceAddStaticShape(_space, shape0 );
         
-        cpShape *shape1 = cpSegmentShapeNew( _space->staticBody, cpv(100,50), cpv(200,50), 0.0f);
-        cpShapeSetElasticity( shape1, 1.0f );
-		cpShapeSetFriction( shape1, 1.0f );
-		cpSpaceAddStaticShape(_space, shape1 );
+//        cpShape *shape1 = cpSegmentShapeNew( _space->staticBody, cpv(100,50), cpv(200,50), 0.0f);
+//        cpShapeSetElasticity( shape1, 1.0f );
+//		cpShapeSetFriction( shape1, 1.0f );
+//		cpSpaceAddStaticShape(_space, shape1 );
         
-        cpShape *shape2 = cpSegmentShapeNew( _space->staticBody, cpv(400,250), cpv(500,250), 0.0f);
-        cpShapeSetElasticity( shape2, 1.0f );
-		cpShapeSetFriction( shape2, 1.0f );
-		cpSpaceAddStaticShape(_space, shape2 );
+//        cpShape *shape2 = cpSegmentShapeNew( _space->staticBody, cpv(400,250), cpv(500,250), 0.0f);
+//        cpShapeSetElasticity( shape2, 1.0f );
+//		cpShapeSetFriction( shape2, 1.0f );
+//		cpSpaceAddStaticShape(_space, shape2 );
+        
+//        cpShape *shape2 = cpPolyShapeNew( _space->staticBody, cpv(400,250), cpv(500,250), 0.0f);
+//        cpShapeSetElasticity( shape2, 1.0f );
+//		cpShapeSetFriction( shape2, 1.0f );
+//		cpSpaceAddStaticShape(_space, shape2 );
         
         cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(150, 10), ccp(450, 210), 0.0f);
         cpShapeSetElasticity( po, 1.0f );
@@ -112,11 +122,24 @@ enum {
         
         CCSprite *background = [CCSprite spriteWithFile:@"catnap_bg.png"];
         background.anchorPoint = CGPointZero;
-//        [self addChild:background z:-1];
+        [self addChild:background z:-1];
+        
+        [self addNewEmeryAtPosition:ccp(150, 200)];
+        
+        [self addNewStoneAtPosition:ccp(150, 100)];
+        [self addNewEmeryAtPosition:ccp(450, 300)];
+        [self addNewStoneAtPosition:ccp(450, 250)];
+//        [self addNewEmeryAtPosition:ccp(150, 250)];
+        
+        [self addNewEmeryAtPosition:ccp(150, 300)];
 		[self scheduleUpdate];
 	}
 	
 	return self;
+}
+
+- (void)registerWithTouchDispatcher {
+    [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
 -(void) initPhysics
@@ -125,7 +148,7 @@ enum {
 	
 	_space = cpSpaceNew();
 	
-	cpSpaceSetGravity( _space, cpv(0, -100) );
+	cpSpaceSetGravity( _space, cpv(0, -200) );
 	
 	//
 	// rogue shapes
@@ -278,6 +301,37 @@ enum {
 	[sprite setPosition: pos];
 }
 
+-(void) addNewStoneAtPosition:(CGPoint)pos
+{
+	int kTagEmeryNode = 21;
+	
+	
+	int num = 4;
+	CGPoint verts[] = {
+		ccp(-25,-25),
+		ccp(-25, 25),
+		ccp(25, 25),
+        ccp(25, -25)
+	};
+    CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"00.png" rect:CGRectMake(0, 0, 50, 50)];
+	cpBody *body = _space->staticBody;
+    //	cpBody *b = cpBodyInitStatic(body);
+	body->p = pos;
+//	cpSpaceAddBody(_space, body);
+	
+	cpShape* shape = cpPolyShapeNew(body, num, verts, CGPointZero);
+	shape->collision_type = kTagEmeryNode;
+	shape->data = sprite;
+	//shape->e = 0.5f; shape->u = 0.5f;
+	cpSpaceAddShape(_space, shape);
+	[sprite setCPBody:body];
+    
+    
+	sprite.position = pos;
+	sprite.tag = kTagEmeryNode;
+	[self addChild:sprite];
+}
+
 -(void) addNewEmeryAtPosition:(CGPoint)pos
 {
     int kTagEmeryNode = 20;
@@ -310,16 +364,36 @@ enum {
 //	[sprite setPhysicsShape:shape space:_space];
 }
 
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+    //cpMouseGrab(mouse, touchLocation, false);
+    cpShape *shape = cpSpacePointQueryFirst(_space, touchLocation, GRABABLE_MASK_BIT, 0);
+    if (shape) {
+        CCPhysicsSprite *sprite = (CCPhysicsSprite *) shape->data;
+        if (shape->collision_type != 21)
+        {
+            cpSpaceRemoveBody(_space, sprite.CPBody);
+        }
+        
+        cpSpaceRemoveShape(_space, shape);
+        [sprite removeFromParentAndCleanup:YES];
+        
+//        [[SimpleAudioEngine sharedEngine] playEffect:@"poof.wav"];
+    }
+    return YES;
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	for( UITouch *touch in touches ) {
-		CGPoint location = [touch locationInView: [touch view]];
-		
-		location = [[CCDirector sharedDirector] convertToGL: location];
-		
-//		[self addNewSpriteAtPosition: location];
-        [self addNewEmeryAtPosition:location];
-	}
+//	for( UITouch *touch in touches ) {
+//		CGPoint location = [touch locationInView: [touch view]];
+//		
+//		location = [[CCDirector sharedDirector] convertToGL: location];
+//		
+////		[self addNewSpriteAtPosition: location];
+//        [self addNewEmeryAtPosition:location];
+//	}
 }
 
 - (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration
