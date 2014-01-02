@@ -115,7 +115,7 @@ enum {
 //		cpShapeSetFriction( shape2, 1.0f );
 //		cpSpaceAddStaticShape(_space, shape2 );
         
-        cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(150, 10), ccp(450, 210), 0.0f);
+        cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(150,50), ccp(450, 210), 0.0f);
         cpShapeSetElasticity( po, 1.0f );
 		cpShapeSetFriction( po, 1.0f );
 		cpSpaceAddStaticShape(_space, po );
@@ -124,18 +124,43 @@ enum {
         background.anchorPoint = CGPointZero;
         [self addChild:background z:-1];
         
-        [self addNewEmeryAtPosition:ccp(150, 200)];
+        [self addNewEmeryAtPosition:ccp(150, 200) tag:100];
         
         [self addNewStoneAtPosition:ccp(150, 100)];
-        [self addNewEmeryAtPosition:ccp(450, 300)];
+        [self addNewEmeryAtPosition:ccp(450, 300) tag:101];
         [self addNewStoneAtPosition:ccp(450, 250)];
 //        [self addNewEmeryAtPosition:ccp(150, 250)];
         
-        [self addNewEmeryAtPosition:ccp(150, 300)];
+        [self addNewEmeryAtPosition:ccp(150, 300) tag:102];
 		[self scheduleUpdate];
+        [self schedule:@selector(checkDistance) interval:0.5f];
 	}
 	
 	return self;
+}
+
+- (void)checkDistance
+{
+    CCPhysicsSprite *sprite1 = (CCPhysicsSprite *)[self getChildByTag:100];
+    CCPhysicsSprite *sprite2 = (CCPhysicsSprite *)[self getChildByTag:101];
+    CCPhysicsSprite *sprite3 = (CCPhysicsSprite *)[self getChildByTag:102];
+    CGPoint p1 = sprite1.position;
+    CGPoint p2 = sprite2.position;
+    CGPoint p3 = sprite3.position;
+    float distance1 = (p1.x-p2.x) * (p1.x-p2.x) + (p1.y-p2.y) * (p1.y-p2.y);
+    distance1 = sqrtf(distance1);
+    NSLog(@"111:%f",distance1);
+    
+    float distance2 = (p3.x-p2.x) * (p3.x-p2.x) + (p3.y-p2.y) * (p3.y-p2.y);
+    distance2 = sqrtf(distance2);
+    NSLog(@"222:%f",distance2);
+    
+    if(distance1 < 180 && distance2 < 180)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"恭喜，你通关了" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        [self unschedule:@selector(checkDistance)];
+    }
 }
 
 - (void)registerWithTouchDispatcher {
@@ -314,7 +339,7 @@ enum {
         ccp(25, -25)
 	};
     CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"00.png" rect:CGRectMake(0, 0, 50, 50)];
-	cpBody *body = _space->staticBody;
+	cpBody *body = cpBodyNewStatic();
     //	cpBody *b = cpBodyInitStatic(body);
 	body->p = pos;
 //	cpSpaceAddBody(_space, body);
@@ -332,9 +357,9 @@ enum {
 	[self addChild:sprite];
 }
 
--(void) addNewEmeryAtPosition:(CGPoint)pos
+-(void) addNewEmeryAtPosition:(CGPoint)pos tag:(int)tag
 {
-    int kTagEmeryNode = 20;
+    int kTagEmeryNode = tag;
 	
 	
 	int num = 4;
