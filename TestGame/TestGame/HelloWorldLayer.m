@@ -124,9 +124,9 @@ enum {
         background.anchorPoint = CGPointZero;
         [self addChild:background z:-1];
         
-        [self addNewEmeryAtPosition:ccp(150, 200) tag:100];
+        [self addNewSunAtPosition:ccp(150, 200)];
         
-        [self addNewStoneAtPosition:ccp(150, 100)];
+        [self addNewStoneAtPosition:ccp(150, 150)];
         [self addNewEmeryAtPosition:ccp(450, 300) tag:101];
         [self addNewStoneAtPosition:ccp(450, 250)];
 //        [self addNewEmeryAtPosition:ccp(150, 250)];
@@ -295,10 +295,10 @@ enum {
 	// physics body
 	int num = 4;
 	cpVect verts[] = {
-		cpv(-24,-54),
-		cpv(-24, 54),
-		cpv( 24, 54),
-		cpv( 24,-54),
+		ccp(-24,-54),
+		ccp(-24, 54),
+		ccp( 24, 54),
+		ccp( 24,-54),
 	};
 	
 	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
@@ -332,13 +332,13 @@ enum {
 	
 	
 	int num = 4;
-	CGPoint verts[] = {
-		ccp(-25,-25),
-		ccp(-25, 25),
-		ccp(25, 25),
-        ccp(25, -25)
-	};
-    CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"00.png" rect:CGRectMake(0, 0, 50, 50)];
+    CGPoint verts[] = {
+        cpv(-25.0f, -4.5f),
+        cpv(-25.0f, 4.0f),
+        cpv(24.5f, 4.0f),
+        cpv(24.5f, -4.5f)
+    };
+    CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"icon_100.png" rect:CGRectMake(0, 0, 50, 9)];
 	cpBody *body = cpBodyNewStatic();
     //	cpBody *b = cpBodyInitStatic(body);
 	body->p = pos;
@@ -363,13 +363,13 @@ enum {
 	
 	
 	int num = 4;
-	CGPoint verts[] = {
-		ccp(-25,-25),
-		ccp(-25, 25),
-		ccp(25, 25),
-        ccp(25, -25)
-	};
-	 CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"Icon.png" rect:CGRectMake(0, 0, 50, 50)];
+    CGPoint verts[] = {
+        cpv(-16.5f, -17.0f),
+        cpv(-16.5f, 16.5f),
+        cpv(16.0f, 16.5f),
+        cpv(16.0f, -17.0f)
+    };
+	 CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"00.png" rect:CGRectMake(0, 0, 33, 34)];
 	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
 //	cpBody *b = cpBodyInitStatic(body);
 	body->p = pos;
@@ -387,6 +387,38 @@ enum {
 	sprite.tag = kTagEmeryNode;
 	[self addChild:sprite];
 //	[sprite setPhysicsShape:shape space:_space];
+}
+
+-(void) addNewSunAtPosition:(CGPoint)pos
+{
+    int kTagEmeryNode = 100;
+	
+	
+	int num = 4;
+    CGPoint verts[] = {
+        cpv(-48.5f, 51.3f),
+        cpv(49.1f, 51.2f),
+        cpv(48.6f, -52.2f),
+        cpv(-48.7f, -51.3f),
+    };
+    CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"icon_101.png" rect:CGRectMake(0, 0, 50, 54)];
+	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
+    //	cpBody *b = cpBodyInitStatic(body);
+	body->p = pos;
+	cpSpaceAddBody(_space, body);
+	
+	cpShape* shape = cpPolyShapeNew(body, num, verts, CGPointZero);
+	shape->collision_type = kTagEmeryNode;
+	shape->data = sprite;
+	//shape->e = 0.5f; shape->u = 0.5f;
+	cpSpaceAddShape(_space, shape);
+	[sprite setCPBody:body];
+    
+    
+	sprite.position = pos;
+	sprite.tag = kTagEmeryNode;
+	[self addChild:sprite];
+    //	[sprite setPhysicsShape:shape space:_space];
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event

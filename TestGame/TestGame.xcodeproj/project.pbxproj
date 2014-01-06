@@ -171,6 +171,8 @@
 		2E722B9F186C7AC5006D359D /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E722B9E186C7AC5006D359D /* HelloWorldLayer.m */; };
 		2E722BA2186C7AC5006D359D /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E722BA1186C7AC5006D359D /* IntroLayer.m */; };
 		2E722BA4186C7AC5006D359D /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E722BA3186C7AC5006D359D /* grossini_dance_atlas.png */; };
+		2EA1A78E187AEC700067A27B /* icon_100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA1A78D187AEC700067A27B /* icon_100.png */; };
+		2EA1A790187B09190067A27B /* icon_101.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EA1A78F187B09190067A27B /* icon_101.png */; };
 		2EB1145A187323FB00E969B2 /* cpMouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 2EB11458187323FB00E969B2 /* cpMouse.c */; };
 		2EF2F0F11871BC7900AA823E /* CPSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F01871BC7900AA823E /* CPSprite.m */; };
 		2EF2F0F41871BC9200AA823E /* SmallBlockSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EF2F0F31871BC9200AA823E /* SmallBlockSprite.m */; };
@@ -521,6 +523,8 @@
 		2E722BA0186C7AC5006D359D /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		2E722BA1186C7AC5006D359D /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		2E722BA3186C7AC5006D359D /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
+		2EA1A78D187AEC700067A27B /* icon_100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_100.png; sourceTree = "<group>"; };
+		2EA1A78F187B09190067A27B /* icon_101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_101.png; sourceTree = "<group>"; };
 		2EB11458187323FB00E969B2 /* cpMouse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpMouse.c; sourceTree = "<group>"; };
 		2EB11459187323FB00E969B2 /* cpMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpMouse.h; sourceTree = "<group>"; };
 		2EF2F0EF1871BC7800AA823E /* CPSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPSprite.h; sourceTree = "<group>"; };
@@ -615,6 +619,7 @@
 		2E7229AE186C7AC3006D359D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2EA1A78F187B09190067A27B /* icon_101.png */,
 				2EF2F0FD1871C24400AA823E /* 00.png */,
 				2EF2F0F91871C17D00AA823E /* catnap_bg-hd.png */,
 				2EF2F0FA1871C17D00AA823E /* catnap_bg.png */,
@@ -1097,6 +1102,7 @@
 		2E722B96186C7AC5006D359D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2EA1A78D187AEC700067A27B /* icon_100.png */,
 				2E722B97186C7AC5006D359D /* Prefix.pch */,
 				2E722B98186C7AC5006D359D /* main.m */,
 			);
@@ -1159,6 +1165,7 @@
 				2EF2F0F61871BED100AA823E /* catnap.plist in Resources */,
 				2E722B1E186C7AC5006D359D /* ChangeLog in Resources */,
 				2E7229B2186C7AC3006D359D /* Default@2x.png in Resources */,
+				2EA1A790187B09190067A27B /* icon_101.png in Resources */,
 				2E7229BC186C7AC3006D359D /* Icon-Small.png in Resources */,
 				2E7229B8186C7AC3006D359D /* Icon-72.png in Resources */,
 				2E7229B0186C7AC3006D359D /* Default.png in Resources */,
@@ -1170,6 +1177,7 @@
 				2EF2F0FB1871C17D00AA823E /* catnap_bg-hd.png in Resources */,
 				2E722BA4186C7AC5006D359D /* grossini_dance_atlas.png in Resources */,
 				2E7229B4186C7AC3006D359D /* Default-568h@2x.png in Resources */,
+				2EA1A78E187AEC700067A27B /* icon_100.png in Resources */,
 				2EF2F0F81871BF5900AA823E /* catnap.png in Resources */,
 				2E7229C2186C7AC3006D359D /* Icon@2x.png in Resources */,
 			);

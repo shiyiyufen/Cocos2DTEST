@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestGame/HelloWorldLayer.m"
-            timestampString = "410372182.8782"
+            timestampString = "410717001.689939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "-ccTouchBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
