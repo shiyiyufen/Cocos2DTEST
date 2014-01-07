@@ -95,10 +95,10 @@ enum {
 //        s2.position = ccp(450, 250);
 //        [self addChild:s2];
         
-        cpShape *shape0 = cpSegmentShapeNew( _space->staticBody, cpv(100,250), cpv(200,250), 0.0f);
-        cpShapeSetElasticity( shape0, 1.0f );
-		cpShapeSetFriction( shape0, 1.0f );
-		cpSpaceAddStaticShape(_space, shape0 );
+//        cpShape *shape0 = cpSegmentShapeNew( _space->staticBody, cpv(100,250), cpv(200,250), 0.0f);
+//        cpShapeSetElasticity( shape0, 1.0f );
+//		cpShapeSetFriction( shape0, 1.0f );
+//		cpSpaceAddStaticShape(_space, shape0 );
         
 //        cpShape *shape1 = cpSegmentShapeNew( _space->staticBody, cpv(100,50), cpv(200,50), 0.0f);
 //        cpShapeSetElasticity( shape1, 1.0f );
@@ -115,23 +115,24 @@ enum {
 //		cpShapeSetFriction( shape2, 1.0f );
 //		cpSpaceAddStaticShape(_space, shape2 );
         
-        cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(150,50), ccp(450, 210), 0.0f);
-        cpShapeSetElasticity( po, 1.0f );
-		cpShapeSetFriction( po, 1.0f );
-		cpSpaceAddStaticShape(_space, po );
+//        cpShape *po = cpSegmentShapeNew(_space->staticBody, ccp(400,70), ccp(500, 70), 0.0f);
+//        cpShapeSetElasticity( po, 1.0f );
+//		cpShapeSetFriction( po, 1.0f );
+//		cpSpaceAddStaticShape(_space, po );
         
         CCSprite *background = [CCSprite spriteWithFile:@"catnap_bg.png"];
         background.anchorPoint = CGPointZero;
         [self addChild:background z:-1];
         
-        [self addNewSunAtPosition:ccp(150, 200)];
+        [self addNewSunAtPosition:ccp(100, 200)];
         
-        [self addNewStoneAtPosition:ccp(150, 150)];
-        [self addNewEmeryAtPosition:ccp(450, 300) tag:101];
-        [self addNewStoneAtPosition:ccp(450, 250)];
+        [self addNewStoneAtPosition:ccp(180, 70)];
+        [self addNewEmeryAtPosition:ccp(320, 300) tag:101];
+        [self addNewStoneAtPosition:ccp(320, 250)];
 //        [self addNewEmeryAtPosition:ccp(150, 250)];
+        [self addNewStoneAtPosition:ccp(320, 70)];
         
-        [self addNewEmeryAtPosition:ccp(150, 300) tag:102];
+        [self addNewEmeryAtPosition:ccp(180, 100) tag:102];
 		[self scheduleUpdate];
         [self schedule:@selector(checkDistance) interval:0.5f];
 	}
@@ -147,7 +148,7 @@ enum {
     CGPoint p1 = sprite1.position;
     CGPoint p2 = sprite2.position;
     CGPoint p3 = sprite3.position;
-    float distance1 = (p1.x-p2.x) * (p1.x-p2.x) + (p1.y-p2.y) * (p1.y-p2.y);
+    float distance1 = (p1.x-p3.x) * (p1.x-p3.x) + (p1.y-p3.y) * (p1.y-p3.y);
     distance1 = sqrtf(distance1);
     NSLog(@"111:%f",distance1);
     
@@ -396,16 +397,16 @@ enum {
 	
 	int num = 4;
     CGPoint verts[] = {
-        cpv(-48.5f, 51.3f),
-        cpv(49.1f, 51.2f),
-        cpv(48.6f, -52.2f),
-        cpv(-48.7f, -51.3f),
+        cpv(-24.25, 26.6f),
+        cpv(24.5f, 25.6f),
+        cpv(24.3f, -26.1f),
+        cpv(-24.35f, -25.65f),
     };
     CCPhysicsSprite *sprite = [CCPhysicsSprite spriteWithFile:@"icon_101.png" rect:CGRectMake(0, 0, 50, 54)];
-	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
+	cpBody *body = cpBodyNewStatic();
     //	cpBody *b = cpBodyInitStatic(body);
 	body->p = pos;
-	cpSpaceAddBody(_space, body);
+//	cpSpaceAddBody(_space, body);
 	
 	cpShape* shape = cpPolyShapeNew(body, num, verts, CGPointZero);
 	shape->collision_type = kTagEmeryNode;
@@ -428,7 +429,7 @@ enum {
     cpShape *shape = cpSpacePointQueryFirst(_space, touchLocation, GRABABLE_MASK_BIT, 0);
     if (shape) {
         CCPhysicsSprite *sprite = (CCPhysicsSprite *) shape->data;
-        if (shape->collision_type != 21)
+        if (!cpBodyIsStatic(sprite.CPBody))
         {
             cpSpaceRemoveBody(_space, sprite.CPBody);
         }
